@@ -85,7 +85,7 @@
 						}
 						
 					}else{
-						echo "Không đúng thông tin đăng nhập";
+						echo '<p style="color:red; text-align:center">Tài khoản hoặc mật khẩu không đúng</p>';
 					}
 				}
 	?>

@@ -27,7 +27,7 @@
 						<div class="detail__product">
 							<h5 class="detail__product-name"><?=$value["tensp"]?></h5>
 							<div class="detail__product-price">
-								<h5>Giá: <span><?=$value["giasp"]?><small>đ</small></span></h5>
+								<h5>Giá: <span><?=$value["giasp"]?></span></h5>
 							</div>
 							<div class="detail__product-info mt-3">
 								<h5>Thông tin chi tiết</h5>
@@ -81,7 +81,7 @@
 										</div>
 										<div class="product-info">
 											<p class="mb-1 mt-1 box__product-name"><?=$value2['tensp']?></p>
-											<p class="mb-1"><span class="product-price"><?php  echo number_format($value2['giasp'], 0, ',', '.').' đ';?><small>đ</small></span></p>
+											<p class="mb-1"><span class="product-price"><?php  echo number_format($value2['giasp'], 0, ',', '.').' đ';?></span></p>
 											<p class="mb-1 product-origin"> Xuất xử:<?=$value2['xuatsu']?></p>
 											<p class="mb-1 product-trademark"> Hãng: <?=$value2['hangsx']?></p> 
 										</div>

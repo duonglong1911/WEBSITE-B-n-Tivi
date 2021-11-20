@@ -29,7 +29,7 @@
                 <div class="header__right">
                     <a href="index.php?controller=home&action=giohang" ><button class="btn-giohang"><i class="fas fa-cart-arrow-down"></i></button></a>
                     <?php
-                    	// session_start();
+                    	//session_start();
 			            if(isset($_SESSION["user"])){   
                     ?>
                     <a href="index.php?controller=home&action=dangxuat"><button class="btn-logout"><span>Đăng Xuất </span> <i class="fas fa-sign-out-alt"></i></button></a>
@@ -68,9 +68,12 @@
                                         <p>Hãng</p><i class="fas fa-chevron-right"></i>
                                     </div>
                                     <ul class="menu__subnav-item">
-                                        <li>r</li>
-										<li>g</li>
-										<li>b</li>
+                                        <?php
+											$danhmuc=danhmuc::getTrademark();
+												foreach ($danhmuc as $key => $value) {
+										?>
+											<li><a href="index.php?controller=sanphams&action=danhsachtheohang&id=<?=$value["mahangsx"]?>"><?=$value["tenhangsx"]?></a></li>
+											<?php } ?>
                                     </ul>
                                 </li>
                             </ul>

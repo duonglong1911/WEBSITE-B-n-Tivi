@@ -791,6 +791,9 @@ td, th {
     font-weight: 500;
     
 }
+.home__btn-viewmore a:hover {
+    color: coral;
+}
 .box__product-name {
     line-height: 1.5em;
     height: 3em;
@@ -804,7 +807,7 @@ td, th {
 }
 .product__content {
     width: 95%;
-    border: 1px solid #999;
+    border: 1px solid #dbdbdb;
     padding: 5px;
     position: relative;
 }

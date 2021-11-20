@@ -27,7 +27,7 @@
 						</div>
 						<div class="product-info">
 							<p class="mb-1 mt-1 box__product-name"><?=$value['tensp']?></p>
-							<p class="mb-1"><span class="product-price"><?php  echo number_format($value['giasp'], 0, ',', '.').' đ';?><small>đ</small></span></p>
+							<p class="mb-1"><span class="product-price"><?php  echo number_format($value['giasp'], 0, ',', '.').' đ';?></span></p>
 							 <p class="mb-1 product-origin"> Xuất xử:<?=$value['xuatsu']?></p>
 							<p class="mb-1 product-trademark"> Hãng: <?=$value['hangsx']?></p> 
 						</div>

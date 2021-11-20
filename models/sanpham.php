@@ -11,6 +11,17 @@
 	        }
 	        return $arrDT;
 	    }
+		public static function getSanPhamByTrademarkId($mahangsx){
+	        $db = DB::getConnection();    
+	        $sql = "SELECT * FROM sanpham WHERE mahangsx = '".$mahangsx."'";
+	        $stmt = $db->prepare($sql);
+	        $stmt->execute();
+	        $arrDT = array();
+	        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+	            $arrDT[] = $row;
+	        }
+	        return $arrDT;
+	    }
 
 	    public static function getRelated($madm){
 	        $db = DB::getConnection();    

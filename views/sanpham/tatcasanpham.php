@@ -15,12 +15,11 @@
 		</div>
 		<div class="col-9">
 			<div class="product_show">
-			<div style="text-align:center;"><p class="product_show_title">Top sản phẩm theo danh mục</p></div>
+			<div style="text-align:center;"><p class="product_show_title">Tất cả sản phẩm</p></div>
 			<div class="home__products">
 				<ul class="list-products">
 					<?php
-						if(isset($_GET["id"])){
-						$sanpham = Sanpham::getSanPhamByDanhMucId($_GET["id"]);
+						$sanpham = Sanpham::getAll();
 						foreach ($sanpham as $key => $value) {
 					?>
 							<li class="product-item col-3 mb-2">
@@ -79,7 +78,7 @@
 							</li>
 						
 					<?php
-						}}
+						}
 					?>
 				</ul>
 			</div>

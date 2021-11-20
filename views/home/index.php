@@ -37,7 +37,7 @@ session_start();
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham4['tensp']?></p>
 										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham4['giasp'], 0, ',', '.').' đ';?><small>đ</small></span>
+												class="product-price"><?php  echo number_format($sanpham4['giasp'], 0, ',', '.').' đ';?></span>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham4['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham4['hangsx']?></p>
@@ -94,7 +94,7 @@ session_start();
 							?>
 					</ul>
 					<div class="home__btn-viewmore mt-2" style="text-align:center;">
-						<a style=" color:#0098DB;" href="/">Xem tất cả sản phẩm</a>
+						<a style=" color:#0098DB;" href="index.php?controller=sanphams&action=tatcasanpham">Xem tất cả sản phẩm</a>
 					</div>
 				</div>
 			</div>
@@ -122,7 +122,7 @@ session_start();
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham['tensp']?></p>
 										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham['giasp'], 0, ',', '.').' đ';?><small>đ</small></span>
+												class="product-price"><?php  echo number_format($sanpham['giasp'], 0, ',', '.').' đ';?></span>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham['hangsx']?></p>
@@ -201,7 +201,7 @@ session_start();
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham2['tensp']?></p>
 										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham2['giasp'], 0, ',', '.').' đ';?><small>đ</small></span>
+												class="product-price"><?php  echo number_format($sanpham2['giasp'], 0, ',', '.').' đ';?></span>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham2['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham2['hangsx']?></p>
@@ -278,7 +278,7 @@ session_start();
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham3['tensp']?></p>
 										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham3['giasp'], 0, ',', '.').' đ';?><small>đ</small></span>
+												class="product-price"><?php  echo number_format($sanpham3['giasp'], 0, ',', '.').' đ';?></span>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham3['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham3['hangsx']?></p>

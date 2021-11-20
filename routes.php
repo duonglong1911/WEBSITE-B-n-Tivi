@@ -1,7 +1,7 @@
 <?php
 	$controllers=array(
 			"home"=>["index","lienhe","giohang","error","deletecartitem","updatecart","thanhtoan","hoanthanh","dangxuat"],
-			"sanphams"=>["danhsach","chitiet","timkiem"],
+			"sanphams"=>["danhsach","chitiet","timkiem","danhsachtheohang","tatcasanpham"],
 			"khachhangs"=>["dangnhap","dangky","quanly","loginprocess"]	
 		);
 

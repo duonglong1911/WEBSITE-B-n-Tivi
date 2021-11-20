@@ -12,6 +12,12 @@
 		public function danhsach(){
 			$this->render("danhsach");
 		}
+		public function danhsachtheohang(){
+			$this->render("danhsachtheohang");
+		}
+		public function tatcasanpham(){
+			$this->render("tatcasanpham");
+		}
 
 		public function timkiem(){
 			if(isset($_POST["ok"])){

@@ -20,7 +20,7 @@
 				<ul class="list-products">
 					<?php
 						if(isset($_GET["id"])){
-						$sanpham = Sanpham::getSanPhamByDanhMucId($_GET["id"]);
+						$sanpham = Sanpham::getSanPhamByTrademarkId($_GET["id"]);
 						foreach ($sanpham as $key => $value) {
 					?>
 							<li class="product-item col-3 mb-2">
