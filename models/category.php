@@ -1,6 +1,6 @@
 <?php
 require_once ("Database.php");
-class Danhmuc
+class Category
 {
 
 	public static function getTrademark(){

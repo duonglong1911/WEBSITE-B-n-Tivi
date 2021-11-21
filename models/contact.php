@@ -1,6 +1,6 @@
 <?php
 require_once ("Database.php");
-	class lienhe{
+	class Contact{
 		
 	    public static function lienhesubmit($makh,$content){
 	        $db=DB::getConnection();

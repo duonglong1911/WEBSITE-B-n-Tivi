@@ -15,17 +15,16 @@
 		</div>
 		<div class="col-9">
 			<div class="product_show">
-			<div style="text-align:center;"><p class="product_show_title">Top sản phẩm theo danh mục</p></div>
+			<div style="text-align:center;"><p class="product_show_title">Tất cả sản phẩm</p></div>
 			<div class="home__products">
 				<ul class="list-products">
 					<?php
-						if(isset($_GET["id"])){
-						$sanpham = Sanpham::getSanPhamByTrademarkId($_GET["id"]);
+						$sanpham = Product::getAll();
 						foreach ($sanpham as $key => $value) {
 					?>
 							<li class="product-item col-3 mb-2">
 								<div class="product__content">
-									<a href="index.php?controller=sanphams&action=chitiet&id=<?=$value['masp']?>">
+									<a href="index.php?controller=products&action=detail&id=<?=$value['masp']?>">
 										<div class="product__image">
 											<img src="../DuongVanLong-BTL/assets/img/user/<?=$value['anhsp']?>" alt="photo" class="product-img">
 										</div>
@@ -61,16 +60,17 @@
 									<div class="product__blur">
 									</div>
 									<div class="product__option">
-										<a href="index.php?controller=sanphams&action=chitiet&id=<?=$value['masp']?>">
+										<a href="index.php?controller=products&action=detail&id=<?=$value['masp']?>">
 											<div class="product__option-item product__option-detail">
 												<i class="far fa-eye"></i>
 											</div>
 										</a>
-										<a href="./chucnang/giohang/themhang.php?id_sp=<?php echo $row['idsp']?>&dongia=<?php  echo $row['price']?>">
+										<button class="button__addcart" type="button"
+											onclick="addcart('<?=$value['masp']?>')">
 											<div class="product__option-item product__option-buy">
 												<i class="fas fa-cart-plus"></i>
 											</div>
-										</a>
+										</button>
 									</div> 
 										
 										
@@ -79,7 +79,7 @@
 							</li>
 						
 					<?php
-						}}
+						}
 					?>
 				</ul>
 			</div>
@@ -87,3 +87,15 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function addcart(id) {
+		soluong = 1;
+		$.post("index.php?controller=home&action=cart", {
+			'id': id,
+			'soluong': soluong
+		}, function (data) {
+			alert("Đã thêm vào giỏ hàng");
+			// window.location.href = "index.php?controller=home&action=giohang";
+		});
+	}
+</script>

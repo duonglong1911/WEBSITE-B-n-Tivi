@@ -7,7 +7,7 @@
 		<h4>Đơn hàng của bạn đã được mua thành công</h4>
 		<p></p>
 		<h4>Cảm ơn bạn đã tin mua sản phẩm của cửa hàng!</h4>
-		<a href="index.php?controller=home&action=trangchu"><button class="complete__btn" type="button">Tiếp tục mua sắm</button></a>
+		<a href="index.php?controller=home&action=index"><button class="complete__btn" type="button">Tiếp tục mua sắm</button></a>
 	</div>
 		
 	</div>

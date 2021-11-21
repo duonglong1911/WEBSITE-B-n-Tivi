@@ -1,10 +1,10 @@
 <?php
 	require_once "controllers/base_controller.php";
-	require_once "models/sanpham.php";
-	require_once "models/danhmuc.php";
-	require_once "models/lienhe.php";
-	require_once "models/donhang.php";
-	require_once "models/khachhang.php";
+	require_once "models/product.php";
+	require_once "models/category.php";
+	require_once "models/contact.php";
+	require_once "models/order.php";
+	require_once "models/customer.php";
 	class homeController extends BaseController
 	{
 		public function __construct(){
@@ -15,16 +15,17 @@
 			$this->render("index");
 		}
 
-		public function hoanthanh(){
-			$this->render("hoanthanh");
+		public function success(){
+			$this->render("success");
 		}
-		public function dangxuat(){
+		public function logout(){
 			session_start();
 			unset($_SESSION['user']);
+			unset($_SESSION['cart']);
 			header("location: ./index.php");
 		}
 
-		public function thanhtoan(){
+		public function paybill(){
 			session_start();
 			$date = date("Y/m/d");
 			$userid = $_SESSION["user"]["id"];
@@ -32,16 +33,16 @@
 				$masp = $value["id"];
 				$soluong = $value["soluong"];
 				$total = $value["price"]*$value["soluong"];
-				$themdon = donhang::add($masp,$userid,$soluong,$total,$date);
+				$themdon = Order::add($masp,$userid,$soluong,$total,$date);
 				unset($_SESSION["cart"][$masp]);
 				setcookie("user",serialize($_SESSION['cart']),time()+3600);
 			}
-			header("location:index.php?controller=home&action=hoanthanh");
+			header("location:index.php?controller=home&action=success");
 		}
 
-		public function lienhe(){
+		public function contact(){
 			
-			$this->render("lienhe");
+			$this->render("contact");
 		}
 
 		public function updatecart(){
@@ -63,7 +64,7 @@
 			$_SESSION["cart"] = $cart;
 			// print_r($_SESSION["cart"]);
 			setcookie("user",serialize($_SESSION['cart']),time()+3600);
-			header("location:index.php?controller=home&action=giohang");
+			header("location:index.php?controller=home&action=cart");
 			}
 		}
 
@@ -72,11 +73,11 @@
 			$id=$_GET["id"];
 			unset($_SESSION["cart"][$id]);
 			setcookie("user",serialize($_SESSION['cart']),time()+3600);
-			header("location:index.php?controller=home&action=giohang");
+			header("location:index.php?controller=home&action=cart");
 		}
 
-		public function giohang(){
-			$sanpham = sanpham::getAll();
+		public function cart(){
+			$sanpham = Product::getAll();
 			session_start();
 			if(isset($_COOKIE['user'])){
 				$_SESSION['cart'] = (array)unserialize($_COOKIE['user']);
@@ -84,7 +85,7 @@
 			if(isset($_POST["id"]) && isset($_POST["soluong"])){
 				$id = $_POST["id"];
 				$soluong = $_POST["soluong"];
-				$sanpham2 = sanpham::getDetailById($id);
+				$sanpham2 = Product::getDetailById($id);
 				foreach ($sanpham2 as $key => $sanpham) {
 					
 				}
@@ -136,9 +137,9 @@
 				$_SESSION["cart"] = $cart;
 				setcookie("user",serialize($_SESSION['cart']),time()+3600);
 			}
-			$sp=Sanpham::getAll();
-			$data=array("Sanpham"=>$sp);
-			$this->render("giohang",$data);
+			$sp=Product::getAll();
+			$data=array("Product"=>$sp);
+			$this->render("cart",$data);
 		}
 	}
 

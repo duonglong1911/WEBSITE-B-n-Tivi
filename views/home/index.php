@@ -23,21 +23,41 @@ session_start();
 				<div class="home__products">
 					<ul class="list-products">
 						<?php
-								$sanpham4 = sanpham::getSanPhamRandom();
+								$sanpham4 = product::getSanPhamRandom();
 								foreach ($sanpham4 as $key => $sanpham4) {
 							?>
 
 						<li class="product-item col-3 mb-2">
 							<div class="product__content">
-								<a href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham4['masp']?>">
+								<a href="index.php?controller=products&action=detail&id=<?=$sanpham4['masp']?>">
 									<div class="product__image">
 										<img src="../DuongVanLong-BTL/assets/img/user/<?=$sanpham4['anhsp']?>"
 											alt="photo" class="product-img">
 									</div>
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham4['tensp']?></p>
-										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham4['giasp'], 0, ',', '.').' đ';?></span>
+										<p class="mb-1">
+											<span class="product-price">
+												<?php 
+													$giasp = $sanpham4['giasp'] - ($sanpham4['giasp']* $sanpham4['giamgia']/100); 
+													if( $giasp == $sanpham4['giasp'] ) {
+														echo number_format($sanpham4['giasp'], 0, ',', '.').' đ';
+													} else {
+													?>
+												</span>
+												<span class="product-price">
+													<?php
+														echo number_format($giasp, 0, ',', '.').' đ';
+													?>
+												</span>
+												<span style="font-size:12px; text-decoration: line-through">
+													<?php
+														echo number_format($sanpham4['giasp'], 0, ',', '.').' đ';
+													?>
+													</span>
+													<?php
+													}
+												?>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham4['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham4['hangsx']?></p>
@@ -71,7 +91,7 @@ session_start();
 									</div>
 									<div class="product__option">
 										<a
-											href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham4['masp']?>">
+											href="index.php?controller=products&action=detail&id=<?=$sanpham4['masp']?>">
 											<div class="product__option-item product__option-detail">
 												<i class="far fa-eye"></i>
 											</div>
@@ -94,7 +114,7 @@ session_start();
 							?>
 					</ul>
 					<div class="home__btn-viewmore mt-2" style="text-align:center;">
-						<a style=" color:#0098DB;" href="index.php?controller=sanphams&action=tatcasanpham">Xem tất cả sản phẩm</a>
+						<a style=" color:#0098DB;" href="index.php?controller=products&action=allproduct">Xem tất cả sản phẩm</a>
 					</div>
 				</div>
 			</div>
@@ -108,21 +128,41 @@ session_start();
 				<div class="home__products">
 					<ul class="list-products">
 						<?php
-						$sanpham = sanpham::getSanPhamMoi();
+						$sanpham = Product::getSanPhamMoi();
 						foreach ($sanpham as $key => $sanpham) {
 					?>
 
 						<li class="product-item col-3 mb-2">
 							<div class="product__content">
-								<a href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham['masp']?>">
+								<a href="index.php?controller=products&action=detail&id=<?=$sanpham['masp']?>">
 									<div class="product__image">
 										<img src="../DuongVanLong-BTL/assets/img/user/<?=$sanpham['anhsp']?>"
 											alt="photo" class="product-img">
 									</div>
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham['tensp']?></p>
-										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham['giasp'], 0, ',', '.').' đ';?></span>
+										<p class="mb-1">
+											<span class="product-price">
+												<?php 
+													$giasp = $sanpham['giasp'] - ($sanpham['giasp']* $sanpham['giamgia']/100); 
+													if( $giasp == $sanpham['giasp'] ) {
+														echo number_format($sanpham['giasp'], 0, ',', '.').' đ';
+													} else {
+													?>
+												</span>
+												<span class="product-price">
+													<?php
+														echo number_format($giasp, 0, ',', '.').' đ';
+													?>
+												</span>
+												<span style="font-size:12px; text-decoration: line-through">
+													<?php
+														echo number_format($sanpham['giasp'], 0, ',', '.').' đ';
+													?>
+													</span>
+													<?php
+													}
+												?>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham['hangsx']?></p>
@@ -155,17 +195,17 @@ session_start();
 									<div class="product__blur">
 									</div>
 									<div class="product__option">
-										<a href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham['masp']?>">
+										<a href="index.php?controller=products&action=detail&id=<?=$sanpham['masp']?>">
 											<div class="product__option-item product__option-detail">
 												<i class="far fa-eye"></i>
 											</div>
 										</a>
-										<a
-											href="./chucnang/giohang/themhang.php?id_sp=<?php echo $row['idsp']?>&dongia=<?php  echo $row['price']?>">
+										<button class="button__addcart" type="button"
+											onclick="addcart('<?=$sanpham['masp']?>')">
 											<div class="product__option-item product__option-buy">
 												<i class="fas fa-cart-plus"></i>
 											</div>
-										</a>
+										</button>
 									</div>
 
 
@@ -187,21 +227,41 @@ session_start();
 				<div class="home__products">
 					<ul class="list-products">
 						<?php
-								$sanpham2 = sanpham::getSanPhamGiamgiaTop4();
+								$sanpham2 = Product::getSanPhamGiamgiaTop4();
 								foreach ($sanpham2 as $key => $sanpham2) {
 							?>
 
 						<li class="product-item col-3 mb-2">
 							<div class="product__content">
-								<a href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham2['masp']?>">
+								<a href="index.php?controller=products&action=detail&id=<?=$sanpham2['masp']?>">
 									<div class="product__image">
 										<img src="../DuongVanLong-BTL/assets/img/user/<?=$sanpham2['anhsp']?>"
 											alt="photo" class="product-img">
 									</div>
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham2['tensp']?></p>
-										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham2['giasp'], 0, ',', '.').' đ';?></span>
+										<p class="mb-1">
+											<span class="product-price">
+												<?php 
+													$giasp = $sanpham2['giasp'] - ($sanpham2['giasp']* $sanpham2['giamgia']/100); 
+													if( $giasp == $sanpham2['giasp'] ) {
+														echo number_format($sanpham2['giasp'], 0, ',', '.').' đ';
+													} else {
+													?>
+												</span>
+												<span class="product-price">
+													<?php
+														echo number_format($giasp, 0, ',', '.').' đ';
+													?>
+												</span>
+												<span style="font-size:12px; text-decoration: line-through">
+													<?php
+														echo number_format($sanpham2['giasp'], 0, ',', '.').' đ';
+													?>
+													</span>
+													<?php
+													}
+												?>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham2['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham2['hangsx']?></p>
@@ -233,17 +293,17 @@ session_start();
 									</div>
 									<div class="product__option">
 										<a
-											href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham2['masp']?>">
+											href="index.php?controller=products&action=detail&id=<?=$sanpham2['masp']?>">
 											<div class="product__option-item product__option-detail">
 												<i class="far fa-eye"></i>
 											</div>
 										</a>
-										<a
-											href="./chucnang/giohang/themhang.php?id_sp=<?php echo $row['idsp']?>&dongia=<?php  echo $row['price']?>">
+										<button class="button__addcart" type="button"
+											onclick="addcart('<?=$sanpham2['masp']?>')">
 											<div class="product__option-item product__option-buy">
 												<i class="fas fa-cart-plus"></i>
 											</div>
-										</a>
+										</button>
 									</div>
 
 
@@ -264,21 +324,41 @@ session_start();
 				<div class="home__products">
 					<ul class="list-products">
 						<?php
-								$sanpham3 = sanpham::getSanPhamHot();
+								$sanpham3 = Product::getSanPhamHot();
 								foreach ($sanpham3 as $key => $sanpham3) {
 							?>
 
 						<li class="product-item col-3 mb-2">
 							<div class="product__content">
-								<a href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham3['masp']?>">
+								<a href="index.php?controller=products&action=detail&id=<?=$sanpham3['masp']?>">
 									<div class="product__image">
 										<img src="../DuongVanLong-BTL/assets/img/user/<?=$sanpham3['anhsp']?>"
 											alt="photo" class="product-img">
 									</div>
 									<div class="product-info">
 										<p class="mb-1 mt-1 box__product-name"><?=$sanpham3['tensp']?></p>
-										<p class="mb-1"><span
-												class="product-price"><?php  echo number_format($sanpham3['giasp'], 0, ',', '.').' đ';?></span>
+										<p class="mb-1">
+											<span class="product-price">
+												<?php 
+													$giasp = $sanpham3['giasp'] - ($sanpham3['giasp']* $sanpham3['giamgia']/100); 
+													if( $giasp == $sanpham3['giasp'] ) {
+														echo number_format($sanpham3['giasp'], 0, ',', '.').' đ';
+													} else {
+													?>
+												</span>
+												<span class="product-price">
+													<?php
+														echo number_format($giasp, 0, ',', '.').' đ';
+													?>
+												</span>
+												<span style="font-size:12px; text-decoration: line-through">
+													<?php
+														echo number_format($sanpham3['giasp'], 0, ',', '.').' đ';
+													?>
+													</span>
+													<?php
+													}
+												?>
 										</p>
 										<p class="mb-1 product-origin"> Xuất xử:<?=$sanpham3['xuatsu']?></p>
 										<p class="mb-1 product-trademark"> Hãng: <?=$sanpham3['hangsx']?></p>
@@ -311,17 +391,17 @@ session_start();
 									</div>
 									<div class="product__option">
 										<a
-											href="index.php?controller=sanphams&action=chitiet&id=<?=$sanpham3['masp']?>">
+											href="index.php?controller=products&action=detail&id=<?=$sanpham3['masp']?>">
 											<div class="product__option-item product__option-detail">
 												<i class="far fa-eye"></i>
 											</div>
 										</a>
-										<a
-											href="./chucnang/giohang/themhang.php?id_sp=<?php echo $row['idsp']?>&dongia=<?php  echo $row['price']?>">
+										<button class="button__addcart" type="button"
+											onclick="addcart('<?=$sanpham3['masp']?>')">
 											<div class="product__option-item product__option-buy">
 												<i class="fas fa-cart-plus"></i>
 											</div>
-										</a>
+										</button>
 									</div>
 
 
@@ -342,7 +422,7 @@ session_start();
 <script type="text/javascript">
 	function addcart(id) {
 		soluong = 1;
-		$.post("index.php?controller=home&action=giohang", {
+		$.post("index.php?controller=home&action=cart", {
 			'id': id,
 			'soluong': soluong
 		}, function (data) {

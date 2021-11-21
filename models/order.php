@@ -1,5 +1,5 @@
 <?php
-	class Donhang{
+	class Order{
 		public static function add($masp,$makh,$soluong,$thanhtien,$ngaymua){
 		    $db=DB::getConnection();
 		    $sql="INSERT INTO donhang(masp,makh,soluong,thanhtien,ngaymua) VALUES ('".$masp."','".$makh."','".$soluong."','".$thanhtien."','".$ngaymua."') ";

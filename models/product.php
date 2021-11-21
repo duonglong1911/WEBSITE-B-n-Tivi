@@ -1,5 +1,5 @@
 <?php
-	class sanpham{
+	class Product{
 		public static function getSanPhamByDanhMucId($madm){
 	        $db = DB::getConnection();    
 	        $sql = "SELECT * FROM sanpham WHERE madm = '".$madm."'";

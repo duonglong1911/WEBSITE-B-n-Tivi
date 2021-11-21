@@ -1,5 +1,5 @@
 <?php
-	class khachhang{
+	class Customer{
 		public static function getKhachhangById($makh){
 	        $db = DB::getConnection();    
 	        $sql = "SELECT * FROM khachhang WHERE makh = '".$makh."' ";

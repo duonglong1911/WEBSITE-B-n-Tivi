@@ -11,7 +11,7 @@
     <script type="text/javascript" src="assets/library/jquery/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="/DuongVanLong-BTL/assets/css/template.css">
-  	<link rel="stylesheet" href="../DuongVanLong-BTL/assets/css/user/content.css">
+  	<link rel="stylesheet" href="../DuongVanLong-BTL/assets/css/content.css">
 </head>
 <body>
 	<div class="header">
@@ -20,22 +20,22 @@
                 <div class="header__logo">
                    <a href="index.php?controller=home&action=index"><img src="assets/img/user/logo-thienphu.png" width="80%" alt="logo"/></a>
                     <div class="header-search">
-                        <form action="index.php?controller=sanphams&action=timkiem" method="POST">
+                        <form action="index.php?controller=products&action=find" method="POST">
                             <input type="search" id="name" name="name" class="search__input" placeholder="Bạn cần tìm gì... ">
                             <button class="search__button" type="submit" name="ok" id="btn_find"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
                 </div>
                 <div class="header__right">
-                    <a href="index.php?controller=home&action=giohang" ><button class="btn-giohang"><i class="fas fa-cart-arrow-down"></i></button></a>
+                    <a href="index.php?controller=home&action=cart" ><button class="btn-giohang"><i class="fas fa-cart-arrow-down"></i></button></a>
                     <?php
                     	//session_start();
 			            if(isset($_SESSION["user"])){   
                     ?>
-                    <a href="index.php?controller=home&action=dangxuat"><button class="btn-logout"><span>Đăng Xuất </span> <i class="fas fa-sign-out-alt"></i></button></a>
+                    <a href="index.php?controller=home&action=logout"><button class="btn-logout"><span>Đăng Xuất </span> <i class="fas fa-sign-out-alt"></i></button></a>
                     <?php } else {
                     ?>
-                    <a href="index.php?controller=khachhangs&action=quanly"><button class="btn-logout"><span>Đăng Nhập </span> <i class="fas fa-sign-in-alt"></i></button></a>
+                    <a href="index.php?controller=customers&action=manage"><button class="btn-logout"><span>Đăng Nhập </span> <i class="fas fa-sign-in-alt"></i></button></a>
                     <?php  } ?>
                 </div>
             </div>
@@ -56,10 +56,10 @@
                                     </div>
                                     <ul class="menu__subnav-item">
                                         <?php
-											$danhmuc=danhmuc::getAll();
+											$danhmuc=Category::getAll();
 												foreach ($danhmuc as $key => $value) {
 										?>
-											<li><a href="index.php?controller=sanphams&action=danhsach&id=<?=$value["madm"]?>"><?=$value["tendm"]?></a></li>
+											<li><a href="index.php?controller=products&action=list&id=<?=$value["madm"]?>"><?=$value["tendm"]?></a></li>
 											<?php } ?>
                                     </ul>
                                 </li>
@@ -69,23 +69,23 @@
                                     </div>
                                     <ul class="menu__subnav-item">
                                         <?php
-											$danhmuc=danhmuc::getTrademark();
+											$danhmuc=Category::getTrademark();
 												foreach ($danhmuc as $key => $value) {
 										?>
-											<li><a href="index.php?controller=sanphams&action=danhsachtheohang&id=<?=$value["mahangsx"]?>"><?=$value["tenhangsx"]?></a></li>
+											<li><a href="index.php?controller=products&action=listtrademark&id=<?=$value["mahangsx"]?>"><?=$value["tenhangsx"]?></a></li>
 											<?php } ?>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li class="menu__item">
-                            <a href="index.php?controller=home&action=giohang" class="menu__item-link">Giỏ hàng</a>
+                            <a href="index.php?controller=home&action=cart" class="menu__item-link">Giỏ hàng</a>
                         </li>
                         <li class="menu__item">
-                            <a href="index.php?controller=home&action=lienhe" class="menu__item-link">Liên hệ</a>
+                            <a href="index.php?controller=home&action=contact" class="menu__item-link">Liên hệ</a>
                         </li>
 						<li class="menu__item">
-                            <a href="index.php?controller=khachhangs&action=quanly" class="menu__item-link">Tài khoản</a>
+                            <a href="index.php?controller=customers&action=manage" class="menu__item-link">Tài khoản</a>
                         </li>
                     </ul>
                     <div class="header__username">
@@ -101,7 +101,7 @@
     </div>
 
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -130,8 +130,83 @@
             </button>
             </div>
         </div>
+    </div> -->
+
+<div class="container">
+    <div class="row">
+            <div class="slideshow-container" style="height:440px">
+		  <!-- Full-width images with number and caption text -->
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="../DuongVanLong-BTL/assets/img/banner1.jpg" style="width:100%">
+                    <div id="text">Caption Text</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="../DuongVanLong-BTL/assets/img/banner2.jpg" style="width:100%">
+                    <div id="text">Caption Two</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="../DuongVanLong-BTL/assets/img/banner4.jpg" style="width:100%">
+                    <div id="text">Caption Three</div>
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
     </div>
-    
+</div>
+<script type="text/javascript">
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		// Next/previous controls
+		function plusSlides(n) {
+		  	showSlides(slideIndex += n);
+		}
+
+		// Thumbnail image controls
+		function currentSlide(n) {
+		  	showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+			  var i;
+			  var slides = document.getElementsByClassName("mySlides");
+			  var dots = document.getElementsByClassName("dot");
+			  if (n > slides.length) {slideIndex = 1}
+			  if (n < 1) {slideIndex = slides.length}
+			  for (i = 0; i < slides.length; i++) {
+			      slides[i].style.display = "none";
+			  }
+			  for (i = 0; i < dots.length; i++) {
+			      dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block";
+			  dots[slideIndex-1].className += " active";
+		}
+
+		var slideIndex = 0;
+		showSlides();
+
+		function showSlides() {
+			  var i;
+			  var slides = document.getElementsByClassName("mySlides");
+			  for (i = 0; i < slides.length; i++) {
+			    slides[i].style.display = "none";
+			  }
+			  slideIndex++;
+			  if (slideIndex > slides.length) {slideIndex = 1}
+			  slides[slideIndex-1].style.display = "block";
+			  setTimeout(showSlides, 2000);
+		}
+	</script>
+
   
 
 	<div id="container">

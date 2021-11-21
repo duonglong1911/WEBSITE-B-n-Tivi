@@ -1,8 +1,8 @@
 <?php
 	$controllers=array(
-			"home"=>["index","lienhe","giohang","error","deletecartitem","updatecart","thanhtoan","hoanthanh","dangxuat"],
-			"sanphams"=>["danhsach","chitiet","timkiem","danhsachtheohang","tatcasanpham"],
-			"khachhangs"=>["dangnhap","dangky","quanly","loginprocess"]	
+			"home"=>["index","contact","cart","error","deletecartitem","updatecart","paybill","success","logout"],
+			"products"=>["list","detail","find","listtrademark","allproduct"],
+			"customers"=>["login","register","manage","loginprocess"]
 		);
 
 	if(!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller]))
@@ -18,3 +18,4 @@
 	$controller = new $klass();
 	$controller->$action();
 ?>
+
